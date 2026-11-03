@@ -35,6 +35,10 @@ figure says what went into it, so the painter can trust or adjust it.
    many rooms were left out.
 5. **No invented accuracy.** Never write "±", a tolerance, "survey grade" or
    "exact". The only confidence you may quote is FimIt's own calibration label.
+   **Imported drawings carry no heights.** When `capture_source.type` is
+   "import", treat `ceiling_height_m` and every opening height as not measured,
+   even if a number is present (it is the importer's default): write "not
+   measured (imported drawing)" and never calculate with it.
 6. **Room names:** use `name` if set; else the detected type from `label`, with
    underscores as spaces, written "dining room (detected)"; else "Room 1",
    "Room 2"… counting only rooms that have neither, in largest-first order of
@@ -78,12 +82,15 @@ figure says what went into it, so the painter can trust or adjust it.
 
 Per room:
 
-1. **Gross wall area** = `perimeter_m` × `ceiling_height_m`. No ceiling height →
-   no wall area for that room ("ceiling height not measured").
+1. **Gross wall area** = `perimeter_m` × `ceiling_height_m`. No ceiling height,
+   or an imported drawing (rule 5) → no wall area for that room: give the
+   perimeter and offer to use a ceiling height the user states, labelled
+   "height given by you".
 2. **Openings taken off** = for each door, window or opening from
    `get_scan_openings` whose `room_ids` include the room and that has both
    `width_m` and `height_m`: width × height. A door between two rooms is taken
-   off both rooms (both faces get painted).
+   off both rooms (both faces get painted). Round each room's total taken off to
+   2 decimals, then subtract.
 3. **Net wall area** = gross − openings taken off.
 4. Openings with `height_m: null` (height not measured — drawn in the editor, or
    from an imported drawing) are **not** taken off. List how many, per room.
@@ -102,12 +109,16 @@ Caveats that must appear when they apply:
 1. Pick the scan, call `get_scan_summary`, `get_scan_rooms`, `get_scan_openings`.
    If `get_scan_openings` is not available, say the connector does not provide
    doors and windows yet, and give the gross wall area only, labelled as such.
+   If it returns no openings, say "the plan records no doors or windows", take
+   nothing off, and say the real wall area is smaller — never imply the room has
+   no doors.
 2. Room table:
 
-   | Room | Perimeter (m) | Ceiling height (m) | Gross wall (m²) | Openings taken off (m²) | Net wall (m²) | Not taken off | Ceiling (m²) | Room id |
-   |---|---|---|---|---|---|---|---|---|
+   | Room | Perimeter (m) | Ceiling height (m) | Gross wall (m²) | Openings taken off (m²) | Net wall (m²) | Not taken off | Ceiling (m²) | Litres | Room id |
+   |---|---|---|---|---|---|---|---|---|---|
 
    - Ceiling (m²): only if the user asks; use `area_sqm` (outline), labelled.
+   - Litres: only when step 3 applies; otherwise leave the column out.
    - Round each cell to 2 decimals; the total row is the sum of the rows (rule 2).
 3. Paint quantity: only if the user gives the coverage (m² per litre) and number
    of coats. Litres = net area × coats ÷ coverage, per room and total. Never

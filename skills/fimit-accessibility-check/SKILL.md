@@ -36,6 +36,10 @@ certify accessibility.
    many rooms were left out.
 5. **No invented accuracy.** Never write "±", a tolerance, "survey grade" or
    "exact". The only confidence you may quote is FimIt's own calibration label.
+   **Imported drawings carry no heights.** When `capture_source.type` is
+   "import", treat `ceiling_height_m` and every opening height as not measured,
+   even if a number is present (it is the importer's default): write "not
+   measured (imported drawing)" and never calculate with it.
 6. **Room names:** use `name` if set; else the detected type from `label`, with
    underscores as spaces, written "dining room (detected)"; else "Room 1",
    "Room 2"… counting only rooms that have neither, in largest-first order of
@@ -86,20 +90,23 @@ against a requirement.
 
 1. Pick the scan, call `get_scan_summary`, `get_scan_rooms`, `get_scan_openings`.
    If `get_scan_openings` is not available, say the connector does not provide
-   door widths yet and stop.
+   door widths yet and stop. If it returns no openings, say "the plan records no
+   doors or openings, so no widths can be checked — check them on site"; never
+   imply the rooms have no doors.
 2. The requirement: use the minimum width the user gives (e.g. "0.80 m clear",
    or the width of a bed or wheelchair). If they give none, ask for it, or show
    the table without a verdict. Never quote a building-code figure as the rule
    that applies to them; local rules differ — tell them to check theirs.
-3. Table, narrowest first:
+3. Table of doors and openings (leave windows out), narrowest first:
 
    | Door / opening | Type | Width (m) | Connects | Meets the minimum? | Opening id |
    |---|---|---|---|---|---|
 
    - Connects: the room names (rule 6) from `room_ids`; "outside or unknown
      room" when there is only one or none.
-   - Meets the minimum: "yes" / "no" / "within 0.05 m — check on site" (the
-     opening width is not the clear width).
+   - Meets the minimum: "no" when the width is below the minimum; "check on
+     site" when it is at the minimum or up to 0.05 m above it (the opening width
+     is not the clear width); "yes" when more than 0.05 m above.
    - Mark `source: "user"` openings as "drawn in the editor" and
      `width_edited_by_user: true` as "width adjusted by hand".
 4. Summary: how many openings are below the minimum, and which rooms can only be
