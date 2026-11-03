@@ -44,6 +44,9 @@ quote to send unchecked.
    underscores as spaces, written "dining room (detected)"; else "Room 1",
    "Room 2"… counting only rooms that have neither, in largest-first order of
    the scan's full room list (so a room keeps its number whatever is filtered).
+   When two rooms end up with the same name, add the detected type or the
+   number in brackets so each row reads differently, e.g. "Room (storage,
+   detected)" or "storage (detected) 2".
    Keep `room_id` in a small last column so the user can find it in FimIt.
 7. **Not ready or could not load:** if a tool says the plan is not ready or could
    not be loaded, say exactly that and give the scan's `fimit_url`. Never fall
