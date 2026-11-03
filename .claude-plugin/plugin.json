@@ -1,0 +1,11 @@
+{
+  "name": "fimit",
+  "displayName": "FimIt",
+  "version": "0.1.0",
+  "description": "Room-by-room areas, cleaning-quote briefs, contractor measurement briefs and downloads from your FimIt LiDAR floor-plan scans, through the read-only FimIt connector.",
+  "author": { "name": "FimIt", "url": "https://fim-it.com" },
+  "homepage": "https://app.fim-it.com/docs/mcp",
+  "repository": "https://github.com/Fim-It/fimit-ai-plugin",
+  "license": "MIT",
+  "keywords": ["floor plan", "lidar", "measurements", "cleaning", "facility management"]
+}

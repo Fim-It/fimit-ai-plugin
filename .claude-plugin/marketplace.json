@@ -1,0 +1,15 @@
+{
+  "name": "fimit",
+  "owner": {
+    "name": "FimIt",
+    "url": "https://fim-it.com"
+  },
+  "description": "Official FimIt plugin: ready-made skills for your FimIt floor-plan scans.",
+  "plugins": [
+    {
+      "name": "fimit",
+      "source": "./",
+      "description": "Ready-made FimIt skills plus the read-only FimIt connector."
+    }
+  ]
+}

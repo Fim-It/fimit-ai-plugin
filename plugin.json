@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "fimit",
+  "version": "0.1.0",
+  "description": "Room-by-room areas, cleaning-quote briefs, contractor and flooring briefs, interior-design fit checks, space inventories and downloads from your FimIt LiDAR floor-plan scans.",
+  "author": { "name": "FimIt", "url": "https://fim-it.com" },
+  "homepage": "https://app.fim-it.com/docs/mcp",
+  "repository": "https://github.com/Fim-It/fimit-ai-plugin",
+  "license": "MIT",
+  "keywords": ["floor plan", "lidar", "measurements", "cleaning", "facility management", "interior design"],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/fimit-room-areas/SKILL.md",
+      "interface": {
+        "displayName": "FimIt",
+        "shortDescription": "Room areas and briefs from your FimIt scans",
+        "longDescription": "Ask about the spaces you scanned with FimIt: room-by-room areas, cleaning-quote and contractor briefs, flooring quantities, furniture fit checks, space inventories and file downloads. Read-only.",
+        "developerName": "FimIt",
+        "category": "Productivity",
+        "capabilities": ["Read"],
+        "websiteURL": "https://fim-it.com",
+        "privacyPolicyURL": "https://app.fim-it.com/privacy",
+        "termsOfServiceURL": "https://app.fim-it.com/terms",
+        "defaultPrompt": [
+          "Room-by-room areas for my latest FimIt scan",
+          "Cleaning-quote brief for a FimIt scan at my price per m²",
+          "What can I download for my latest FimIt scan?"
+        ]
+      }
+    }
+  }
+}
