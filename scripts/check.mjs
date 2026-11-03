@@ -12,7 +12,7 @@ import { join, relative } from 'node:path';
 const ROOT = new URL('..', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
 const TOOLS = new Set([
   'list_projects', 'list_scans', 'get_scan_summary',
-  'get_scan_rooms', 'get_scan_materials', 'get_scan_exports',
+  'get_scan_rooms', 'get_scan_materials', 'get_scan_exports', 'get_scan_openings',
 ]);
 // Frontmatter keys claude.ai accepts on upload; anything else is a hard error there.
 const ALLOWED_KEYS = new Set(['name', 'description', 'license', 'compatibility', 'metadata', 'allowed-tools']);

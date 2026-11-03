@@ -15,6 +15,8 @@ spaces you have scanned and get a finished answer in one prompt.
 | Flooring brief | "How much flooring do the bedrooms need?" |
 | Interior design | "Will a 2.2 × 0.95 m sofa fit in the living room?" |
 | Space inventory | "Room list by type for the Head office project" |
+| Paint brief | "How much wall is there to paint in the bedrooms?" |
+| Accessibility check | "Which doors are narrower than 0.80 m?" |
 | Downloads | "What files can I download for this scan?" |
 
 Every answer states the units, the scan date, whether the scan was calibrated
