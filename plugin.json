@@ -1,13 +1,13 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "fimit",
-  "version": "0.2.0",
-  "description": "Room-by-room areas, cleaning-quote briefs, contractor, flooring and paint briefs, interior-design fit checks, door-width checks, space inventories and downloads from your FimIt LiDAR floor-plan scans.",
+  "version": "0.3.0",
+  "description": "Room-by-room areas, cleaning-quote briefs, contractor, flooring and paint briefs, interior-design fit checks, door-width checks, estate-agent property packs, space inventories and downloads from your FimIt LiDAR floor-plan scans.",
   "author": { "name": "FimIt", "url": "https://fim-it.com" },
   "homepage": "https://app.fim-it.com/docs/mcp",
   "repository": "https://github.com/Fim-It/fimit-ai-plugin",
   "license": "MIT",
-  "keywords": ["floor plan", "lidar", "measurements", "cleaning", "facility management", "interior design"],
+  "keywords": ["floor plan", "lidar", "measurements", "cleaning", "facility management", "interior design", "real estate"],
   "extensions": {
     "com.openai": {
       "onboardingSkill": "./skills/fimit-room-areas/SKILL.md",

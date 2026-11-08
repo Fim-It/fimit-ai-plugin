@@ -17,11 +17,18 @@ spaces you have scanned and get a finished answer in one prompt.
 | Space inventory | "Room list by type for the Head office project" |
 | Paint brief | "How much wall is there to paint in the bedrooms?" |
 | Accessibility check | "Which doors are narrower than 0.80 m?" |
+| Property pack (estate agents) | "Property pack for Calle Mayor 12 for my listing" |
 | Downloads | "What files can I download for this scan?" |
 
 Every answer states the units, the scan date, whether the scan was calibrated
 and whether the plan was edited, and never adds up areas from different scans,
 because two scans can cover the same floor.
+
+The property pack gives an estate agent a room schedule, a factual listing
+paragraph and the files to attach. Its areas are LiDAR or drawing
+measurements, not a certified measurement to a standard such as NEN 2580,
+BOA, RICS or "superficie útil"; every pack says so, and the agent stays
+responsible for the area they publish.
 
 ## Install
 
